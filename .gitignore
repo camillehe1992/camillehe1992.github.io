@@ -1,6 +1,7 @@
 # Hugo generated output
 /public/
 /resources/_gen/
+/hugo_stats.json
 
 # Hugo caches and local state
 /.hugo_build.lock

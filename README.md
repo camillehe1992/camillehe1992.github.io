@@ -13,9 +13,9 @@ The blog is intended to document practical engineering work and serve as a long-
 
 ## Project status
 
-Phase 1 — project initialization and repository structure.
+Phase 2 — Hugo core setup.
 
-The implementation roadmap is maintained in [BLOG_IMPLEMENTATION_CHECKLIST.md](BLOG_IMPLEMENTATION_CHECKLIST.md). Later phases will add Hugo, the Blowfish theme, content, quality automation, and GitHub Pages deployment.
+The implementation roadmap is maintained in [BLOG_IMPLEMENTATION_CHECKLIST.md](BLOG_IMPLEMENTATION_CHECKLIST.md). Later phases will add the Blowfish theme, site customization, quality automation, and GitHub Pages deployment.
 
 ## Planned repository conventions
 
@@ -27,7 +27,7 @@ The implementation roadmap is maintained in [BLOG_IMPLEMENTATION_CHECKLIST.md](B
 
 ## Prerequisites
 
-The initial setup does not install or pin Hugo yet. Phase 2 will select and document the Hugo Extended version after the Blowfish compatibility target is confirmed.
+The repository uses Hugo Extended. The currently validated local version is `0.119.0`; the exact CI toolchain will be pinned when the deployment workflow is added. Blowfish integration and compatibility verification are intentionally deferred to Phase 3.
 
 Planned local tooling:
 
@@ -37,14 +37,20 @@ Planned local tooling:
 
 ## Planned local workflow
 
-Once Hugo is initialized in Phase 2, the expected local workflow will be:
+The local Hugo workflow is:
 
 ```sh
 hugo server --buildDrafts
 hugo --minify
 ```
 
-These commands are documented as the target workflow only; they are not expected to work until Hugo setup is completed.
+The development server includes draft content for local review. Production builds exclude drafts by default and write generated output to `public/`, which remains untracked.
+
+## Configuration notes
+
+- `config/_default/hugo.yaml` contains the core site configuration and is deliberately theme-neutral.
+- `baseURL` is a placeholder until the GitHub repository URL is finalized; update it before deployment.
+- The `content/` files are minimal structural validation content. The representative post is a draft and is not intended for publication.
 
 ## License and content ownership
 
