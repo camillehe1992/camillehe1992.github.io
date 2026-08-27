@@ -107,3 +107,15 @@ code-copy controls.
 - [ ] Images have alt text, acceptable size, and attribution where required.
 - [ ] Headings are ordered, prose is clear, and the page works on mobile.
 - [ ] The draft was previewed and the production build succeeds.
+
+## Portfolio conventions
+
+Portfolio pages use the following reusable structure:
+
+- **Project cards:** lead with the problem and outcome, then list architecture, technologies, security, cost, repository, and learnings.
+- **Technology tags:** use short, stable names such as `AWS`, `Terraform`, `GitHub Actions`, `Security`, and `RAG`; reserve tags for concrete technologies or themes.
+- **Architecture showcases:** pair a real, shareable diagram with concise boundary, automation, and trade-off decisions. Do not invent systems, metrics, or diagrams.
+- **Featured articles:** link to published posts only after the article has passed the editorial checklist; the homepage can surface recent writing through the existing Blowfish profile layout.
+- **GitHub links:** add repository URLs manually to published case studies. The site intentionally does not call the GitHub API.
+
+Resume/CV, analytics, a custom domain, comments/newsletter, and AI-assisted publishing are deferred until there is real content and clear operational ownership. The current site remains deployable through the existing GitHub Pages workflow.
