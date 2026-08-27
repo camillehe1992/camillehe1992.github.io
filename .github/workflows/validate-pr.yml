@@ -1,0 +1,46 @@
+name: Validate pull request
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pr-validation-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: Build Hugo site
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Set up Hugo
+        uses: peaceiris/actions-hugo@v3
+        with:
+          hugo-version: "0.165.0"
+          extended: true
+
+      - name: Set up Go
+        uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Cache Hugo resources
+        uses: actions/cache@v5
+        with:
+          path: resources/_gen
+          key: hugo-resources-${{ runner.os }}-${{ hashFiles('config/_default/**', 'go.mod', 'go.sum', 'content/**', 'assets/**') }}
+          restore-keys: |
+            hugo-resources-${{ runner.os }}-
+
+      - name: Download Hugo modules
+        run: go mod download
+
+      - name: Build site
+        run: hugo --minify --panicOnWarning

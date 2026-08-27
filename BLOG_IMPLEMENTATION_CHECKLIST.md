@@ -129,19 +129,24 @@ Feature branch ── Pull Request ──► GitHub Actions: lint + Hugo build +
 
 **Tasks**
 
-- [ ] Create content sections for `aws`, `terraform`, `devops`, `security`, and `ai`, with room for `rag` where useful.
-- [ ] Define front matter, naming, heading, excerpt, image, and publication conventions.
-- [ ] Add an article template or archetype with safe defaults.
-- [ ] Document code block languages, command output, warnings, references, and reproducible examples.
-- [ ] Define image storage, naming, alt text, compression, and attribution rules.
-- [ ] Choose Mermaid support only if it renders reliably in local and production builds; otherwise use versioned SVG/PNG diagrams.
-- [ ] Add an editorial checklist covering accuracy, security-sensitive values, links, spelling, accessibility, and mobile rendering.
+- [x] Create content sections for `aws`, `terraform`, `devops`, `security`, and `ai`, with room for `rag` where useful.
+- [x] Define front matter, naming, heading, excerpt, image, and publication conventions.
+- [x] Add an article template or archetype with safe defaults.
+- [x] Document code block languages, command output, warnings, references, and reproducible examples.
+- [x] Define image storage, naming, alt text, compression, and attribution rules.
+- [x] Choose Mermaid support only if it renders reliably in local and production builds; otherwise use versioned SVG/PNG diagrams.
+- [x] Add an editorial checklist covering accuracy, security-sensitive values, links, spelling, accessibility, and mobile rendering.
 
-**Deliverables:** content taxonomy, authoring guide, archetype, and at least one representative article per priority topic.
+**Deliverables:** content taxonomy, authoring guide, and archetype. Representative
+articles are intentionally deferred until real article content is ready; Phase 5
+was scoped to establish the structure and workflow without writing blog articles.
 
 **Dependencies:** Phases 2–4.
 
-**Validation:** a new author can create, preview, validate, and publish an article using the documented workflow.
+**Validation:** a new author can create, preview, validate, and publish an article using the documented workflow. Verified with `hugo new`, draft taxonomy generation, and a final `hugo --minify` build.
+
+**Phase 5 status:** Complete. See [CONTENT_GUIDE.md](CONTENT_GUIDE.md) and
+`archetypes/posts.md` for the implemented workflow. Phase 6 remains pending.
 
 ### Phase 6 — GitHub Actions CI/CD
 
