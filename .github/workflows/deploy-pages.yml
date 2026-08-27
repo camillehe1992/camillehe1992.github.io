@@ -1,20 +1,25 @@
-name: Validate main branch
+name: Deploy Hugo site to GitHub Pages
 
 on:
   push:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
 
 concurrency:
-  group: main-validation
+  group: pages
   cancel-in-progress: true
 
 jobs:
   build:
     name: Build Hugo site
     runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v7
@@ -42,5 +47,29 @@ jobs:
       - name: Download Hugo modules
         run: go mod download
 
+      - name: Configure GitHub Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
       - name: Build site
-        run: hugo --minify --panicOnWarning
+        run: hugo --minify --panicOnWarning --baseURL "${{ steps.pages.outputs.base_url }}/"
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: public
+
+  deploy:
+    name: Deploy to GitHub Pages
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
