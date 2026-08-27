@@ -13,9 +13,9 @@ The blog is intended to document practical engineering work and serve as a long-
 
 ## Project status
 
-Phase 2 — Hugo core setup.
+Phase 3 — Blowfish theme integration.
 
-The implementation roadmap is maintained in [BLOG_IMPLEMENTATION_CHECKLIST.md](BLOG_IMPLEMENTATION_CHECKLIST.md). Later phases will add the Blowfish theme, site customization, quality automation, and GitHub Pages deployment.
+The implementation roadmap is maintained in [BLOG_IMPLEMENTATION_CHECKLIST.md](BLOG_IMPLEMENTATION_CHECKLIST.md). Later phases will add site customization, quality automation, and GitHub Pages deployment.
 
 ## Planned repository conventions
 
@@ -27,12 +27,13 @@ The implementation roadmap is maintained in [BLOG_IMPLEMENTATION_CHECKLIST.md](B
 
 ## Prerequisites
 
-The repository uses Hugo Extended. The currently validated local version is `0.119.0`; the exact CI toolchain will be pinned when the deployment workflow is added. Blowfish integration and compatibility verification are intentionally deferred to Phase 3.
+The repository uses Hugo Extended. The currently validated version is `0.165.0`, recorded in `.hugo-version`. This satisfies the current Blowfish v3 minimum requirement of Hugo `0.162.0`. Blowfish integration remains a separate Phase 3 task.
 
 Planned local tooling:
 
 - Git
-- Hugo Extended
+- Hugo Extended `0.165.0` (see `.hugo-version`)
+- Go 1.21 or newer for Hugo Modules
 - GitHub CLI, optional
 
 ## Planned local workflow
@@ -51,6 +52,8 @@ The development server includes draft content for local review. Production build
 - `config/_default/hugo.yaml` contains the core site configuration and is deliberately theme-neutral.
 - `baseURL` is a placeholder until the GitHub repository URL is finalized; update it before deployment.
 - The `content/_index.md` file is a minimal structural homepage placeholder. Blog posts will be added in a later content-authoring phase.
+- Blowfish v3.4.0 is imported through `config/_default/module.toml` and pinned in `go.mod`/`go.sum`.
+- The theme is intentionally integrated without personal branding, menus, author details, analytics, or deployment settings.
 
 ## License and content ownership
 

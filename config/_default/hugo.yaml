@@ -1,5 +1,5 @@
 baseURL: "https://example.github.io/"
-languageCode: "en-us"
+locale: "en-US"
 defaultContentLanguage: "en"
 timezone: "Asia/Shanghai"
 title: "Personal Technical Blog"
