@@ -1,0 +1,23 @@
+# Hugo generated output
+/public/
+/resources/_gen/
+
+# Hugo caches and local state
+/.hugo_build.lock
+/.hugo_cache/
+
+# OS and editor files
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.local
