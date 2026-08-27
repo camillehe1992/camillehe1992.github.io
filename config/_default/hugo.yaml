@@ -2,8 +2,8 @@ baseURL: "https://example.github.io/"
 locale: "en-US"
 defaultContentLanguage: "en"
 timezone: "Asia/Shanghai"
-title: "Personal Technical Blog"
-description: "A professional technical blog covering cloud architecture, infrastructure, DevOps, security, and AI engineering."
+title: "Camille He | Cloud Engineering Portfolio"
+description: "Cloud engineering notes and portfolio work covering AWS, Terraform, DevOps, security, and AI engineering."
 enableRobotsTXT: true
 enableGitInfo: false
 enableEmoji: true
@@ -21,6 +21,12 @@ markup:
 taxonomies:
   category: categories
   tag: tags
+
+params:
+  author: "Camille He"
+  authorEmail: ""
+  authorBio: "Cloud and DevOps engineer focused on reliable infrastructure, automation, and practical AI engineering."
+  authorLocation: ""
 
 outputs:
   home:

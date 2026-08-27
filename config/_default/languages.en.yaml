@@ -1,0 +1,13 @@
+label: English
+weight: 1
+title: "Camille He | Cloud Engineering Portfolio"
+params:
+  displayName: EN
+  isoCode: en
+  rtl: false
+  dateFormat: "2 January 2006"
+  description: "Cloud engineering notes and portfolio work covering AWS, Terraform, DevOps, security, and AI engineering."
+  author:
+    name: Camille He
+    headline: Cloud / DevOps Engineer
+    bio: "I design dependable cloud infrastructure and explore practical automation and AI engineering patterns."

@@ -13,9 +13,9 @@ The blog is intended to document practical engineering work and serve as a long-
 
 ## Project status
 
-Phase 3 — Blowfish theme integration.
+Phase 4 — Site configuration and customization.
 
-The implementation roadmap is maintained in [BLOG_IMPLEMENTATION_CHECKLIST.md](BLOG_IMPLEMENTATION_CHECKLIST.md). Later phases will add site customization, quality automation, and GitHub Pages deployment.
+The implementation roadmap is maintained in [BLOG_IMPLEMENTATION_CHECKLIST.md](BLOG_IMPLEMENTATION_CHECKLIST.md). Later phases will add content authoring, quality automation, and GitHub Pages deployment.
 
 ## Planned repository conventions
 
@@ -49,11 +49,11 @@ The development server includes draft content for local review. Production build
 
 ## Configuration notes
 
-- `config/_default/hugo.yaml` contains the core site configuration and is deliberately theme-neutral.
+- `config/_default/hugo.yaml`, `params.yaml`, `languages.en.yaml`, and `menus.en.yaml` contain site and Blowfish configuration.
 - `baseURL` is a placeholder until the GitHub repository URL is finalized; update it before deployment.
 - The `content/_index.md` file is a minimal structural homepage placeholder. Blog posts will be added in a later content-authoring phase.
 - Blowfish v3.4.0 is imported through `config/_default/module.toml` and pinned in `go.mod`/`go.sum`.
-- The theme is intentionally integrated without personal branding, menus, author details, analytics, or deployment settings.
+- Social profile links remain unconfigured until real profile URLs are available; analytics, comments, and deployment settings are intentionally out of scope.
 
 ## License and content ownership
 

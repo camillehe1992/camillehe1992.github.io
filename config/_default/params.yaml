@@ -1,0 +1,53 @@
+colorScheme: blowfish
+defaultAppearance: dark
+autoSwitchAppearance: true
+enableA11y: true
+enableSearch: true
+enableCodeCopy: true
+enableStructuredBreadcrumbs: true
+replyByEmail: false
+
+seo:
+  metaDescriptionOrder:
+    - description
+    - summary
+    - site
+
+header:
+  layout: basic
+
+footer:
+  showMenu: true
+  showCopyright: true
+  showThemeAttribution: false
+  showAppearanceSwitcher: true
+  showScrollToTop: true
+
+homepage:
+  layout: profile
+  showRecent: true
+  showRecentItems: 5
+  showMoreLink: true
+  showMoreLinkDest: /posts/
+
+article:
+  showDate: true
+  showAuthor: true
+  showReadingTime: true
+  showHeadingAnchors: true
+  showPagination: true
+  showTaxonomies: true
+  showCategories: true
+  showTags: true
+
+list:
+  showSummary: true
+  showCards: true
+  groupByYear: true
+
+sitemap:
+  excludedKinds:
+    - taxonomy
+    - term
+
+# Add real profile URLs when they are available; empty links are intentionally omitted.
