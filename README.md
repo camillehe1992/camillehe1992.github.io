@@ -13,9 +13,9 @@ The blog is intended to document practical engineering work and serve as a long-
 
 ## Project status
 
-Phase 4 — Site configuration and customization.
+Phase 5 — Content structure and authoring workflow.
 
-The implementation roadmap is maintained in [BLOG_IMPLEMENTATION_CHECKLIST.md](BLOG_IMPLEMENTATION_CHECKLIST.md). Later phases will add content authoring, quality automation, and GitHub Pages deployment.
+The implementation roadmap is maintained in [BLOG_IMPLEMENTATION_CHECKLIST.md](BLOG_IMPLEMENTATION_CHECKLIST.md). Later phases will add quality automation and GitHub Pages deployment.
 
 ## Planned repository conventions
 
@@ -38,7 +38,7 @@ Planned local tooling:
 
 ## Planned local workflow
 
-The local Hugo workflow is:
+The local Hugo workflow is documented in [CONTENT_GUIDE.md](CONTENT_GUIDE.md). The short version is:
 
 ```sh
 hugo server --buildDrafts
@@ -51,7 +51,7 @@ The development server includes draft content for local review. Production build
 
 - `config/_default/hugo.yaml`, `params.yaml`, `languages.en.yaml`, and `menus.en.yaml` contain site and Blowfish configuration.
 - `baseURL` is a placeholder until the GitHub repository URL is finalized; update it before deployment.
-- The `content/_index.md` file is a minimal structural homepage placeholder. Blog posts will be added in a later content-authoring phase.
+- Technical posts are organized under `content/posts/{aws,terraform,cloudformation,devops,security,ai}/`; see [CONTENT_GUIDE.md](CONTENT_GUIDE.md) for front matter, visuals, formatting, and editorial review conventions.
 - Blowfish v3.4.0 is imported through `config/_default/module.toml` and pinned in `go.mod`/`go.sum`.
 - Social profile links remain unconfigured until real profile URLs are available; analytics, comments, and deployment settings are intentionally out of scope.
 
