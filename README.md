@@ -50,7 +50,7 @@ The development server includes draft content for local review. Production build
 
 - `config/_default/hugo.yaml` contains the core site configuration and is deliberately theme-neutral.
 - `baseURL` is a placeholder until the GitHub repository URL is finalized; update it before deployment.
-- The `content/` files are minimal structural validation content. The representative post is a draft and is not intended for publication.
+- The `content/_index.md` file is a minimal structural homepage placeholder. Blog posts will be added in a later content-authoring phase.
 
 ## License and content ownership
 
