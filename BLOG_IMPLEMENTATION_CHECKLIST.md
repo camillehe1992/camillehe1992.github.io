@@ -48,6 +48,28 @@ Feature branch ── Pull Request ──► GitHub Actions: lint + Hugo build +
 
 ## 2. Phased implementation plan
 
+### Phase 1–7 readiness audit — 2026-08-27
+
+This audit was completed before starting Phase 8. Status is based on the
+repository contents, Git history, local Hugo builds, and the available local
+workflow files. GitHub repository settings and Actions deployment history were
+not available from the current environment, so remote-only checks remain
+explicitly unverified.
+
+| Phase | Status | Evidence and remaining work |
+| --- | --- | --- |
+| 1. Project initialization | Complete | Repository structure, baseline documentation, Git ignore rules, and generated-output policy are present. History includes the repository initialization commits. |
+| 2. Hugo setup | Complete | Hugo Extended `0.165.0`, site configuration, content structure, and successful local production builds are present. |
+| 3. Blowfish integration | Complete | Blowfish v3.4.0 is pinned through Hugo Modules in `go.mod`, `go.sum`, and `config/_default/module.toml`; local builds load the theme. |
+| 4. Site configuration | Partially complete | Site identity, navigation, taxonomy, responsive theme behavior, metadata, RSS, sitemap, and robots output are present. Social links and optional search/analytics decisions remain incomplete or intentionally deferred. |
+| 5. Content workflow | Complete | `CONTENT_GUIDE.md`, `archetypes/posts.md`, content sections, and editorial conventions are present; the local build succeeds. |
+| 6. GitHub Actions CI/CD | Partially complete | PR/main Hugo validation and Pages deployment workflows are present. Markdown, YAML, and Markdown-aware link validation are not yet implemented, so the full Phase 6 checklist is not complete. |
+| 7. GitHub Pages deployment | Partially complete | `.github/workflows/deploy-pages.yml` uses the build → Pages artifact → deployment flow, and `baseURL` is configured for the user site. Pages source, environment settings, deployment history, and public smoke checks require GitHub access and remain unverified. |
+
+**Phase 8 readiness:** Do not mark Phases 1–7 fully complete yet. Phase 8 may
+be designed, but its entry criteria should track the Phase 6 quality-gate gaps
+and the remote Phase 7 verification items above.
+
 ### Phase 1 — Project initialization and repository structure
 
 **Objective:** Establish a clean, documented Hugo repository boundary.
@@ -146,9 +168,14 @@ was scoped to establish the structure and workflow without writing blog articles
 **Validation:** a new author can create, preview, validate, and publish an article using the documented workflow. Verified with `hugo new`, draft taxonomy generation, and a final `hugo --minify` build.
 
 **Phase 5 status:** Complete. See [CONTENT_GUIDE.md](CONTENT_GUIDE.md) and
-`archetypes/posts.md` for the implemented workflow. Phase 6 remains pending.
+`archetypes/posts.md` for the implemented workflow. The Phase 1–7 readiness
+audit above records the current status of later phases.
 
 ### Phase 6 — GitHub Actions CI/CD
+
+**Phase 6 status:** Partially complete. Hugo validation and Pages deployment
+workflows are implemented, but the Markdown, YAML, and Markdown-aware link
+quality gates listed below remain outstanding.
 
 **Objective:** Automate validation and produce a reproducible build artifact.
 
@@ -170,6 +197,10 @@ was scoped to establish the structure and workflow without writing blog articles
 
 ### Phase 7 — GitHub Pages deployment
 
+**Phase 7 status:** Partially complete. The deployment workflow and production
+`baseURL` are implemented. Repository Pages settings, deployment history, and
+public-site smoke checks still require remote GitHub verification.
+
 **Objective:** Publish the validated site reliably.
 
 **Tasks**
@@ -189,20 +220,26 @@ was scoped to establish the structure and workflow without writing blog articles
 
 ### Phase 8 — Quality automation and validation
 
+**Phase 8 status:** Complete for the required automation. Markdown, YAML,
+workflow syntax, Hugo build, source-document links, and generated-site links
+are enforced by the pull-request workflow. Spell checking and scheduled
+maintenance checks remain intentionally optional and were not added because
+the current technical content would create more noise than value.
+
 **Objective:** Prevent regressions in content, configuration, and generated output.
 
 **Tasks**
 
-- [ ] Add Markdown linting with repository-specific rules.
-- [ ] Add YAML linting for workflows and configuration.
+- [x] Add Markdown linting with repository-specific rules.
+- [x] Add YAML linting for workflows and configuration.
 - [ ] Add spell checking with an allowlist for product names, AWS services, and technical terms.
-- [ ] Add Markdown-aware broken-link checking that understands anchors and local paths.
-- [ ] Run Hugo build validation with warnings treated as actionable failures where practical.
-- [ ] Add pre-commit hooks for fast local checks.
-- [ ] Add a pull-request status summary and retain only non-sensitive diagnostics.
+- [x] Add Markdown-aware broken-link checking that understands anchors and local paths.
+- [x] Run Hugo build validation with warnings treated as actionable failures where practical.
+- [x] Add pre-commit hooks for fast local checks.
+- [x] Add a pull-request status summary and retain only non-sensitive diagnostics.
 - [ ] Add scheduled link and dependency checks if maintenance value justifies the noise.
 
-**Required automation:** Hugo build, Markdown lint, YAML lint, link checking, and pull-request validation.
+**Required automation:** Hugo build, Markdown lint, YAML lint, link checking, and pull-request validation. Implemented in `.github/workflows/validate-pr.yml` and `.github/scripts/validate-quality.sh`.
 
 **Optional automation:** spell check, pre-commit hooks, scheduled checks, Lighthouse/accessibility audits, dependency update bots, and HTML validation.
 

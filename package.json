@@ -1,0 +1,14 @@
+{
+  "name": "camillehe1992.github.io-quality",
+  "private": true,
+  "scripts": {
+    "lint:markdown": "markdownlint-cli2 '**/*.md' '#public/**' '#node_modules/**'",
+    "check:links": "markdown-link-check --config .markdown-link-check.json README.md CONTENT_GUIDE.md BLOG_IMPLEMENTATION_CHECKLIST.md",
+    "check:quality": "npm run lint:markdown && npm run check:links"
+  },
+  "devDependencies": {
+    "markdown-link-check": "3.11.2",
+    "markdownlint-cli2": "0.20.0",
+    "linkinator": "7.5.0"
+  }
+}
