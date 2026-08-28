@@ -10,4 +10,9 @@ params:
   author:
     name: Camille He
     headline: Cloud / DevOps Engineer
+    image: img/author.png
     bio: "I design dependable cloud infrastructure and explore practical automation and AI engineering patterns."
+    links:
+      - github: "https://github.com/camillehe1992"
+      - linkedin: "https://www.linkedin.com/in/camillehe/"
+      - email: "mailto:camille.he@outlook.com"
