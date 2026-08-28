@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "lint:markdown": "markdownlint-cli2 '**/*.md' '#public/**' '#node_modules/**'",
-    "check:links": "markdown-link-check --config .markdown-link-check.json README.md CONTENT_GUIDE.md BLOG_IMPLEMENTATION_CHECKLIST.md",
+    "check:links": "markdown-link-check --config .markdown-link-check.json README.md README.zh.md docs/CONTENT_GUIDE.md docs/CONTENT_GUIDE.zh.md docs/WEBSITE_MAINTENANCE_GUIDE.md docs/WEBSITE_MAINTENANCE_GUIDE.zh.md",
     "check:quality": "npm run lint:markdown && npm run check:links"
   },
   "devDependencies": {

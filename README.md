@@ -1,81 +1,77 @@
 # Personal Technical Blog
 
+[中文](README.zh.md) ｜ [English](README.md)
+
 Professional personal technical blog built with Hugo and the Blowfish theme, published through GitHub Pages.
+
+The live site is the default GitHub Pages user site: <https://camillehe1992.github.io/>.
 
 The blog is intended to document practical engineering work and serve as a long-term portfolio covering:
 
-- AWS Cloud Architecture
-- Terraform and CloudFormation
-- DevOps and CI/CD
-- GitHub Actions
+- Public Cloud Architecture (AWS)
+- Infrastructure as Code (Terraform, CloudFormation)
+- DevOps, CI/CD, and GitHub Actions
 - Cloud Security
-- AI Engineering and RAG applications
-
-## Project status
-
-Phase 1–3 and Phase 5 are complete. Phase 4, Phase 6, and Phase 7 remain
-partially complete pending the readiness audit in
-[BLOG_IMPLEMENTATION_CHECKLIST.md](BLOG_IMPLEMENTATION_CHECKLIST.md).
-
-The implementation roadmap and the Phase 1–7 pre-Phase-8 audit are maintained
-in [BLOG_IMPLEMENTATION_CHECKLIST.md](BLOG_IMPLEMENTATION_CHECKLIST.md).
-
-## Planned repository conventions
-
-- Source content and configuration are reviewed and versioned through Git.
-- Generated Hugo output is not committed to the source branch.
-- Pull requests will be used for content and configuration changes.
-- Production deployment is performed by GitHub Actions after the site build;
-  the remaining quality gates are tracked in the checklist.
-- Secrets, credentials, private keys, and sensitive infrastructure identifiers must never be committed.
+- AI Engineering and RAG Applications
 
 ## Prerequisites
 
-The repository uses Hugo Extended. The currently validated version is `0.165.0`, recorded in `.hugo-version`. This satisfies the current Blowfish v3 minimum requirement of Hugo `0.162.0`. Blowfish integration remains a separate Phase 3 task.
+The repository uses Hugo Extended `0.165.0`, recorded in `.hugo-version`. This
+is compatible with the current Blowfish v3 integration.
 
-Planned local tooling:
+Local tooling:
 
 - Git
 - Hugo Extended `0.165.0` (see `.hugo-version`)
 - Go 1.21 or newer for Hugo Modules
 - Node.js 22 or newer for Markdown and generated-site checks
-- GitHub CLI, optional
 
-## Local validation workflow
+## Local workflow
 
-The local Hugo workflow is documented in [CONTENT_GUIDE.md](CONTENT_GUIDE.md). The short version is:
+The article creation and publishing workflow is documented in the
+[content guide](docs/CONTENT_GUIDE.md), which covers article structure, front
+matter, visuals, technical formatting, editorial review, and publishing
+conventions.
 
-```sh
-hugo server --buildDrafts
-hugo --minify
-npm ci
-npm run lint:markdown
-yamllint -c .yamllint .github config
-hugo --minify --panicOnWarning
-npm run check:links
-
-# Complete CI-equivalent quality gate (requires yamllint and actionlint)
-.github/scripts/validate-quality.sh
-
-# Optional fast checks before committing
-pre-commit run --all-files
-```
-
-The development server includes draft content for local review. Production builds exclude drafts by default and write generated output to `public/`, which remains untracked.
+The development server includes draft content for local review
+(`hugo server --buildDrafts`). Production builds exclude drafts by default and
+write generated output to `public/`, which remains untracked.
 
 ## Configuration notes
 
 - `config/_default/hugo.yaml`, `params.yaml`, `languages.en.yaml`, and `menus.en.yaml` contain site and Blowfish configuration.
 - `baseURL` is configured for the GitHub Pages user site at
   `https://camillehe1992.github.io/`.
-- Technical posts are organized under `content/posts/{aws,terraform,cloudformation,devops,security,ai}/`; see [CONTENT_GUIDE.md](CONTENT_GUIDE.md) for front matter, visuals, formatting, and editorial review conventions.
+- Technical posts are organized under `content/posts/{aws,terraform,cloudformation,devops,security,ai}/`; see [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md) for front matter, visuals, formatting, and editorial review conventions.
 - Blowfish v3.4.0 is imported through `config/_default/module.toml` and pinned in `go.mod`/`go.sum`.
-- Social profile links remain unconfigured until real profile URLs are available; analytics, comments, and deployment settings are intentionally out of scope.
+- Social profile links remain unconfigured until real profile URLs are available.
+  Analytics, comments, Newsletter, Resume/CV, and AI-assisted publishing are
+  not implemented and remain optional future work.
 
-CI runs the same Markdown, YAML, Hugo, and generated-site link gates on pull
-requests. Install Node.js 22, `yamllint`, and `actionlint` locally for exact
-parity; pre-commit intentionally runs only the fast Markdown and YAML checks.
+CI runs Markdown, YAML, GitHub Actions syntax, Hugo, and generated-site link
+gates on pull requests. Install Node.js 22, `yamllint`, and `actionlint` locally
+for exact parity. Formal pre-commit hooks, spell checking, secret scanning,
+scheduled checks, and Lighthouse audits are not currently implemented.
+
+## Repository conventions
+
+- Source content and configuration are reviewed and versioned through Git.
+- Generated Hugo output is not committed to the source branch.
+- Pull Requests are used for content and configuration changes.
+- GitHub Actions builds and deploys the validated Pages artifact.
+- Secrets, credentials, private keys, and sensitive infrastructure identifiers
+  must never be committed.
+
+## Documentation
+
+- [Content guide](docs/CONTENT_GUIDE.md) ｜ [中文](docs/CONTENT_GUIDE.zh.md):
+  article creation, editing, and publishing conventions.
+- [Website maintenance guide](docs/WEBSITE_MAINTENANCE_GUIDE.md) ｜
+  [中文](docs/WEBSITE_MAINTENANCE_GUIDE.zh.md): configuration, deployment,
+  quality gates, outstanding work, and future plans.
 
 ## License and content ownership
 
-Add the project license and content reuse policy before the first public release. Technical articles must identify third-party material and preserve applicable licenses.
+Add the project license and content reuse policy before treating the site as a
+fully documented public portfolio. Technical articles must identify
+third-party material and preserve applicable licenses.

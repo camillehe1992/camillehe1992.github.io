@@ -1,7 +1,11 @@
 # Content Authoring Guide
 
-This guide defines the Phase 5 workflow for technical articles. Content lives in
-`content/` and is reviewed as Markdown; generated `public/` output is not committed.
+[中文](CONTENT_GUIDE.zh.md) ｜ [English](CONTENT_GUIDE.md)
+
+This guide defines the current workflow for technical articles and portfolio
+content. Content lives in `content/` and is reviewed as Markdown; generated
+`public/` output is not committed. Site-wide deployment and maintenance rules
+are documented in [WEBSITE_MAINTENANCE_GUIDE.md](WEBSITE_MAINTENANCE_GUIDE.md).
 
 ## Content structure
 
@@ -54,6 +58,7 @@ taxonomies are enabled in `config/_default/hugo.yaml` and rendered by Blowfish.
 Use the archetype headings as a flexible starting point: Overview, Background,
 Architecture / Design, Implementation, Configuration Examples, Validation,
 Lessons Learned, and References. Remove sections that do not serve the article.
+Use the theme-provided H1 for the page and start the body with H2 headings.
 
 ## Visuals
 
@@ -66,9 +71,13 @@ content/posts/aws/example/
 ```
 
 This keeps diagrams beside the article and avoids filename collisions. Use
-`static/images/` only for site-wide assets. Prefer versioned SVG or optimized
-PNG diagrams; introduce Mermaid only after local and production rendering is
-verified. Every visual needs alt text, and third-party visuals need attribution.
+`static/images/` only for site-wide assets. Resources Hugo must process live
+in `assets/`; directly published assets such as favicons, downloads, and stable
+images live in `static/`. Prefer versioned SVG or optimized PNG diagrams;
+introduce Mermaid only after local and production rendering is verified. Every
+visual needs alt text, and third-party visuals need attribution. Diagrams
+support the prose rather than replace it, and must not depict systems,
+metrics, or projects that do not exist.
 
 ## Technical formatting
 
@@ -83,8 +92,9 @@ resource "aws_s3_bucket" "example" {
 }
 ```
 
-Put command output in `text` blocks, explain non-obvious flags, and show the
-expected validation result. Hugo Goldmark and Blowfish provide highlighting and
+Put command output in `text` blocks. State prerequisites, key parameters, and
+expected results for commands, explain non-obvious flags, and show the expected
+validation result. Hugo Goldmark and Blowfish provide highlighting and
 code-copy controls.
 
 ## Local publishing workflow
@@ -93,9 +103,32 @@ code-copy controls.
 2. Edit front matter and sections; add page-bundle visuals if needed.
 3. Preview drafts with `hugo server -D`.
 4. Review links, code, spelling, accessibility, mobile layout, and sensitive values.
-5. Run `hugo --minify` and confirm the build succeeds.
-6. Set `draft: false`, review once more, and commit the source.
-7. Publish through the reviewed Git workflow. CI/CD is out of scope for Phase 5.
+5. Run `hugo --minify --panicOnWarning` and confirm the build succeeds.
+6. Run the repository quality gates when Node.js 22, `yamllint`, and
+   `actionlint` are available.
+7. Set `draft: false`, review once more, and open a Pull Request.
+8. Publish by merging the reviewed change to `main`; GitHub Actions deploys the
+   validated Pages artifact.
+9. After merge, verify the live pages, assets, RSS, sitemap, canonical URLs, and
+   404 page.
+
+The short-version local commands are:
+
+```sh
+hugo server --buildDrafts
+hugo --minify
+npm ci
+npm run lint:markdown
+yamllint -c .yamllint .github config
+hugo --minify --panicOnWarning
+npm run check:links
+
+# Complete CI-equivalent quality gate (requires yamllint and actionlint)
+.github/scripts/validate-quality.sh
+
+# Optional fast checks before committing
+pre-commit run --all-files
+```
 
 ## Editorial checklist
 
@@ -119,3 +152,13 @@ Portfolio pages use the following reusable structure:
 - **GitHub links:** add repository URLs manually to published case studies. The site intentionally does not call the GitHub API.
 
 Resume/CV, analytics, a custom domain, comments/newsletter, and AI-assisted publishing are deferred until there is real content and clear operational ownership. The current site remains deployable through the existing GitHub Pages workflow.
+
+## Current publishing boundary
+
+The public site currently has no dated technical articles and no confirmed
+public repository, profile, or contact links. Do not create representative
+projects, metrics, architecture diagrams, or personal claims without source
+material that is ready to publish. RAG remains a topic within the `ai` section,
+not a separate content section. The AWS, CI/CD, and AI/RAG items on the
+Projects page are content templates, not completed real projects, and must not
+be described as such.
