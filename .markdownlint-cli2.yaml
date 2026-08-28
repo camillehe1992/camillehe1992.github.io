@@ -13,3 +13,4 @@ globs:
 ignores:
   - "public/**"
   - "node_modules/**"
+  - "docs/**"
