@@ -5,7 +5,8 @@
 This guide defines the current workflow for technical articles and portfolio
 content. Content lives in `content/` and is reviewed as Markdown; generated
 `public/` output is not committed. Site-wide deployment and maintenance rules
-are documented in [WEBSITE_MAINTENANCE_GUIDE.md](WEBSITE_MAINTENANCE_GUIDE.md).
+are documented in the [Website Maintenance Guide](WEBSITE_MAINTENANCE_GUIDE.md)
+｜ [中文](WEBSITE_MAINTENANCE_GUIDE.zh.md).
 
 ## Content structure
 
@@ -45,13 +46,15 @@ series: []
 ```
 
 Use `featuredImage` and `featuredImageAlt` together. `series` is optional.
-Descriptions are metadata; summaries are reader-facing previews. Set
-`draft: false` only after review.
+`date` is filled in by the archetype from the local creation time; set it
+deliberately. Descriptions are metadata; summaries are reader-facing previews.
+Set `draft: false` only after review.
 
-Configured categories are AWS, Terraform, CloudFormation, DevOps, Security,
-AI, and RAG. Use tags for concrete technologies such as EC2, VPC, IAM,
-Kubernetes, GitHub Actions, CI/CD, LLM, and Vector Database. Hugo's standard
-taxonomies are enabled in `config/_default/hugo.yaml` and rendered by Blowfish.
+Use the following categories consistently, matching the section structure:
+AWS, Terraform, CloudFormation, DevOps, Security, AI, and RAG. Use tags for
+concrete technologies such as EC2, VPC, IAM, Kubernetes, GitHub Actions,
+CI/CD, LLM, and Vector Database. Hugo's standard taxonomies are enabled in
+`config/_default/hugo.yaml` and rendered by Blowfish.
 
 ## Article structure
 
@@ -73,7 +76,8 @@ content/posts/aws/example/
 This keeps diagrams beside the article and avoids filename collisions. Use
 `static/images/` only for site-wide assets. Resources Hugo must process live
 in `assets/`; directly published assets such as favicons, downloads, and stable
-images live in `static/`. Prefer versioned SVG or optimized PNG diagrams;
+images live in `static/`. The profile layout currently uses
+`assets/img/author.png`. Prefer versioned SVG or optimized PNG diagrams;
 introduce Mermaid only after local and production rendering is verified. Every
 visual needs alt text, and third-party visuals need attribution. Diagrams
 support the prose rather than replace it, and must not depict systems,
@@ -99,7 +103,9 @@ code-copy controls.
 
 ## Local publishing workflow
 
-1. Create a draft: `hugo new posts/<topic>/<slug>.md`.
+1. Create a draft with `hugo new posts/<topic>/<slug>.md`; use
+   `hugo new posts/<topic>/<slug>/index.md` when the article needs page-bundle
+   visuals.
 2. Edit front matter and sections; add page-bundle visuals if needed.
 3. Preview drafts with `hugo server -D`.
 4. Review links, code, spelling, accessibility, mobile layout, and sensitive values.
@@ -150,15 +156,3 @@ Portfolio pages use the following reusable structure:
 - **Architecture showcases:** pair a real, shareable diagram with concise boundary, automation, and trade-off decisions. Do not invent systems, metrics, or diagrams.
 - **Featured articles:** link to published posts only after the article has passed the editorial checklist; the homepage can surface recent writing through the existing Blowfish profile layout.
 - **GitHub links:** add repository URLs manually to published case studies. The site intentionally does not call the GitHub API.
-
-Resume/CV, analytics, a custom domain, comments/newsletter, and AI-assisted publishing are deferred until there is real content and clear operational ownership. The current site remains deployable through the existing GitHub Pages workflow.
-
-## Current publishing boundary
-
-The public site currently has no dated technical articles and no confirmed
-public repository, profile, or contact links. Do not create representative
-projects, metrics, architecture diagrams, or personal claims without source
-material that is ready to publish. RAG remains a topic within the `ai` section,
-not a separate content section. The AWS, CI/CD, and AI/RAG items on the
-Projects page are content templates, not completed real projects, and must not
-be described as such.

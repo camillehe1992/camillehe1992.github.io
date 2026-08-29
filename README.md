@@ -44,14 +44,16 @@ write generated output to `public/`, which remains untracked.
   `https://camillehe1992.github.io/`.
 - Technical posts are organized under `content/posts/{aws,terraform,cloudformation,devops,security,ai}/`; see [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md) for front matter, visuals, formatting, and editorial review conventions.
 - Blowfish v3.4.0 is imported through `config/_default/module.toml` and pinned in `go.mod`/`go.sum`.
-- Social profile links remain unconfigured until real profile URLs are available.
-  Analytics, comments, Newsletter, Resume/CV, and AI-assisted publishing are
-  not implemented and remain optional future work.
+- GitHub, LinkedIn, and email profile links are configured in
+  `config/_default/languages.en.yaml`.
+- Analytics, comments, Newsletter, Resume/CV, and AI-assisted publishing are
+  out of scope for the current site.
 
 CI runs Markdown, YAML, GitHub Actions syntax, Hugo, and generated-site link
 gates on pull requests. Install Node.js 22, `yamllint`, and `actionlint` locally
-for exact parity. Formal pre-commit hooks, spell checking, secret scanning,
-scheduled checks, and Lighthouse audits are not currently implemented.
+for exact parity. Pre-commit hooks are configured in `.pre-commit-config.yaml`
+as optional local fast checks; spell checking, secret scanning, scheduled
+checks, and Lighthouse audits are not part of the current quality gates.
 
 ## Repository conventions
 
@@ -68,7 +70,7 @@ scheduled checks, and Lighthouse audits are not currently implemented.
   article creation, editing, and publishing conventions.
 - [Website maintenance guide](docs/WEBSITE_MAINTENANCE_GUIDE.md) ｜
   [中文](docs/WEBSITE_MAINTENANCE_GUIDE.zh.md): configuration, deployment,
-  quality gates, outstanding work, and future plans.
+  and quality gates.
 
 ## License and content ownership
 
