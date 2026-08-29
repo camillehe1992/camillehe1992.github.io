@@ -40,12 +40,15 @@ front matter、图片、技术格式、编辑审阅和发布约定。
 - `baseURL` 配置为 GitHub Pages 用户站点地址 `https://camillehe1992.github.io/`。
 - 技术文章位于 `content/posts/{aws,terraform,cloudformation,devops,security,ai}/`；front matter、图片、格式和编辑审阅约定见 [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md)。
 - Blowfish `v3.4.0` 通过 `config/_default/module.toml` 引入，并在 `go.mod`/`go.sum` 中固定。
-- 真实 profile 链接在可公开的 URL 确定前保持未配置。Analytics、评论、Newsletter、Resume/CV 和 AI 辅助发布尚未实现，属于可选未来工作。
+- GitHub、LinkedIn 和 email profile 链接已配置在
+  `config/_default/languages.en.yaml`。
+- Analytics、评论、Newsletter、Resume/CV 和 AI 辅助发布不在当前站点范围内。
 
 CI 在 Pull Request 中运行 Markdown、YAML、GitHub Actions syntax、Hugo 和
 generated-site link 检查。本地安装 Node.js 22、`yamllint` 和 `actionlint`
-可获得完全一致的检查结果。正式 pre-commit hooks、拼写检查、secret scanning、
-定期检查和 Lighthouse 审计目前尚未实现。
+可获得完全一致的检查结果。pre-commit hooks 已配置在
+`.pre-commit-config.yaml` 中，作为本地可选快速检查；拼写检查、secret
+scanning、定期检查和 Lighthouse 审计不属于当前质量检查范围。
 
 ## 仓库约定
 
@@ -58,7 +61,7 @@ generated-site link 检查。本地安装 Node.js 22、`yamllint` 和 `actionlin
 ## 文档地图
 
 - [内容指南](docs/CONTENT_GUIDE.md) ｜ [中文](docs/CONTENT_GUIDE.zh.md)：文章创建、编辑和发布约定。
-- [网站维护规范](docs/WEBSITE_MAINTENANCE_GUIDE.md) ｜ [中文](docs/WEBSITE_MAINTENANCE_GUIDE.zh.md)：配置、部署、质量检查、未完成事项和未来规划。
+- [网站维护规范](docs/WEBSITE_MAINTENANCE_GUIDE.md) ｜ [中文](docs/WEBSITE_MAINTENANCE_GUIDE.zh.md)：配置、部署和质量检查。
 
 ## 许可与内容所有权
 

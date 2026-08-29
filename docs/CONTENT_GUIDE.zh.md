@@ -4,7 +4,7 @@
 
 本指南定义当前技术文章和作品集内容的创作、审核与发布流程。内容位于
 `content/`，以 Markdown 形式审阅；生成的 `public/` 输出不提交。站点级部署
-与维护规则见 [WEBSITE_MAINTENANCE_GUIDE.md](WEBSITE_MAINTENANCE_GUIDE.md) ｜
+与维护规则见 [网站维护规范](WEBSITE_MAINTENANCE_GUIDE.md) ｜
 [中文](WEBSITE_MAINTENANCE_GUIDE.zh.md)。
 
 ## 内容结构
@@ -44,12 +44,12 @@ series: []
 ```
 
 `featuredImage` 和 `featuredImageAlt` 应配套使用。`series` 可选。
-description 是元数据，summary 是面向读者的预览。审阅完成后才设置
-`draft: false`。
+`date` 由 archetype 在创建时写入本地时间，需刻意设置。description 是
+元数据，summary 是面向读者的预览。审阅完成后才设置 `draft: false`。
 
-已配置的分类为 AWS、Terraform、CloudFormation、DevOps、Security、AI 和
-RAG；tags 用于 EC2、VPC、IAM、Kubernetes、GitHub Actions、CI/CD、LLM、
-Vector Database 等具体技术。Hugo 标准 taxonomy 在
+分类与章节结构保持一致，统一使用 AWS、Terraform、CloudFormation、DevOps、
+Security、AI 和 RAG；tags 用于 EC2、VPC、IAM、Kubernetes、GitHub Actions、
+CI/CD、LLM、Vector Database 等具体技术。Hugo 标准 taxonomy 在
 `config/_default/hugo.yaml` 中启用，并由 Blowfish 渲染。
 
 ## 文章结构
@@ -70,10 +70,10 @@ content/posts/aws/example/
 
 这使图片与文章放在一起，并避免文件名冲突。`static/images/` 仅用于站点级
 资源。需要 Hugo 处理的资源放在 `assets/`；直接发布的 favicon、下载文件和
-稳定图片放在 `static/`。优先使用版本化 SVG 或优化后的 PNG；Mermaid 只有在
-本地和生产渲染都验证通过后才引入。每张图片都需要 alt text，第三方图片需要
-attribution。架构图应辅助而非替代文字说明，不得描绘不存在的系统、指标或
-项目。
+稳定图片放在 `static/`。profile 布局当前使用 `assets/img/author.png`。
+优先使用版本化 SVG 或优化后的 PNG；Mermaid 只有在本地和生产渲染都验证通过
+后才引入。每张图片都需要 alt text，第三方图片需要 attribution。架构图应
+辅助而非替代文字说明，不得描绘不存在的系统、指标或项目。
 
 ## 技术格式
 
@@ -93,7 +93,8 @@ resource "aws_s3_bucket" "example" {
 
 ## 本地发布流程
 
-1. 创建草稿：`hugo new posts/<topic>/<slug>.md`。
+1. 创建草稿：`hugo new posts/<topic>/<slug>.md`；需要 page-bundle 图片时
+   使用 `hugo new posts/<topic>/<slug>/index.md`。
 2. 编辑 front matter 和章节；需要时添加 page-bundle 图片。
 3. 使用 `hugo server -D` 预览草稿。
 4. 检查链接、代码、拼写、无障碍、移动端布局和敏感值。
@@ -142,15 +143,3 @@ pre-commit run --all-files
 - **架构展示：** 用真实、可分享的图配合简明的边界、自动化和权衡说明。不得虚构系统、指标或图。
 - **精选文章：** 只链接已通过编辑检查清单并已发布的文章；主页可通过现有 Blowfish profile 布局展示近期文章。
 - **GitHub 链接：** 手动为已发布的案例研究添加仓库 URL。站点有意不调用 GitHub API。
-
-Resume/CV、Analytics、自定义域名、评论/Newsletter 和 AI 辅助发布在具备真实
-内容和明确的维护责任前暂缓。当前站点仍可通过现有 GitHub Pages workflow
-部署。
-
-## 当前发布边界
-
-公开站点目前没有已发布的 dated technical articles，也没有已确认的公开
-仓库、profile 或 contact 链接。没有可发布的一手素材时，不得创建代表性
-项目、指标、架构图或个人宣称。RAG 仍属于 `ai` 主题下的分类，不是独立内容
-分区。Projects 页面中的 AWS、CI/CD 和 AI/RAG 条目是内容模板，不是已完成的
-真实项目，不应描述为真实项目。

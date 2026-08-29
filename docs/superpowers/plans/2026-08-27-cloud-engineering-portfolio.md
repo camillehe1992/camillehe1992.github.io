@@ -10,9 +10,10 @@
 
 ---
 
-### Task 1: Portfolio content and discovery
+## Task 1: Portfolio content and discovery
 
 **Files:**
+
 - Modify: `content/_index.md`
 - Modify: `content/about/_index.md`
 - Modify: `content/projects/_index.md`
@@ -23,9 +24,10 @@
 - [ ] Write Projects page with reusable case-study fields and honest project-status labels; include architecture, security, cost, technologies, repository placeholder, and key-learnings prompts.
 - [ ] Add homepage profile links for Projects and About using existing Blowfish parameters.
 
-### Task 2: Navigation and portfolio conventions
+## Task 2: Navigation and portfolio conventions
 
 **Files:**
+
 - Modify: `config/_default/menus.en.yaml`
 - Modify: `content/projects/_index.md`
 - Modify: `CONTENT_GUIDE.md`
@@ -34,9 +36,10 @@
 - [ ] Add documentation for technology tags, project cards, architecture showcases, featured articles, and manual GitHub links.
 - [ ] Document why resume, analytics, custom domain, comments/newsletter, and AI-assisted publishing remain deferred.
 
-### Task 3: Verify the site and regression boundaries
+## Task 3: Verify the site and regression boundaries
 
 **Files:**
+
 - Test: generated Hugo output and existing `.github/workflows/*.yml`
 
 - [ ] Run `hugo --minify` and inspect generated homepage, About, Projects, RSS, sitemap, and navigation links.

@@ -7,27 +7,12 @@ This is the operational guide for maintaining
 writing and publishing conventions are documented in
 [CONTENT_GUIDE.md](CONTENT_GUIDE.md).
 
-This guide distinguishes three states:
-
-- **Complete:** supported by current repository or public-site evidence.
-- **Outstanding:** not implemented yet.
-- **Unverified:** requires repository access, live environment access, or broader device testing.
-
 ## 1. Current site boundaries
 
 Confirmed facts about the technology stack, Hugo Modules integration, Pages
 URL, and deployment model are documented in [README.md](../README.md)
 (Prerequisites, Configuration notes, Repository conventions) and are not
 repeated here.
-
-### Unverified or out of scope
-
-- Custom domains, DNS, and CNAME configuration are out of scope for the current project.
-- GitHub repository branch protection rules and required checks are not yet recorded in repository settings.
-- The full GitHub Actions deployment history is not part of the local repository evidence.
-- Mobile breakpoints, real-device behavior, and Lighthouse scores have not been systematically verified.
-- Social account URLs, avatars, location, and public contact details are not provided and must not be added speculatively.
-- Analytics, comments, Newsletter, and complex AI-assisted publishing flows are not enabled.
 
 ## 2. Maintenance principles
 
@@ -48,12 +33,6 @@ repeated here.
 - Do not commit generated directories, temporary files, or local dependencies.
 - Theme, Hugo, and CI tooling upgrades should be committed separately with the version changes recorded.
 - Create Git tags for important site releases or theme upgrades when needed.
-
-### Outstanding or unconfirmed
-
-- [ ] Protect `main` in the GitHub repository and require Pull Requests to pass required checks before merging.
-- [ ] Record the actual required-checks names in repository documentation.
-- [ ] Confirm that the default branch, branch protection, and Actions permission settings match the current workflows.
 
 ## 4. Hugo and Blowfish maintenance
 
@@ -80,19 +59,10 @@ repeated here.
 4. Complete a local production build and core page checks.
 5. Merge and deploy only after the Pull Request is validated.
 
-### Outstanding or unconfirmed
-
-- [ ] Add a real avatar, logo, default social image, and public profile links.
-- [ ] Verify code, tables, images, and future charts in both dark and light mode.
-- [ ] Complete real checks on mobile devices and responsive breakpoints.
-- [ ] Confirm that search does not index drafts or private content.
-- [ ] Maintain a dedicated check for SEO title templates, Open Graph images, and structured data.
-- [ ] Document the naming, scope, and maintenance of custom CSS and layout overrides.
-
 ## 5. Content publishing conventions
 
-Article creation, front matter, technical formatting, visuals, publishing
-workflow, and current content status are documented in
+Article creation, front matter, technical formatting, visuals, and the
+publishing workflow are documented in
 [CONTENT_GUIDE.md](CONTENT_GUIDE.md) and are not repeated here.
 
 Maintenance-specific content rules:
@@ -108,8 +78,6 @@ Developer → Pull Request checks → merge to main
          → Hugo production build → Pages artifact
          → github-pages Environment → public site
 ```
-
-Currently confirmed:
 
 - Pages Source uses GitHub Actions.
 - The `github-pages` Environment is configured.
@@ -132,13 +100,6 @@ curl -fsSL https://camillehe1992.github.io/ | tr '>' '>\n' | grep -i canonical
 Confirm that the homepage is reachable, the error page returns 404, RSS and
 sitemap return valid content, and canonical URLs use the default user-site URL.
 
-### Outstanding or unconfirmed
-
-- [ ] Record the most recent successful Actions deployment run ID and deployment time.
-- [ ] Record whether `github-pages` Environment protection requires reviewers.
-- [ ] Complete post-publish checks on a real mobile device.
-- [ ] Add rollback runbooks: revert source changes and redeploy through the normal workflow.
-
 ## 7. Quality automation
 
 ### Required checks
@@ -158,46 +119,7 @@ Local full checks are documented in the Local publishing workflow section of
 before committing. Local checks require Node.js 22, `yamllint`, and
 `actionlint`; Node.js 18 may not run the currently locked Markdown toolchain.
 
-### Outstanding or unconfirmed
-
-- [ ] Add spell checking with an AWS/technical-terms allowlist.
-- [ ] Add formal pre-commit hooks; currently planned only as optional fast checks.
-- [ ] Add scheduled external-link and dependency checks.
-- [ ] Add Lighthouse or equivalent performance/accessibility audits.
-- [ ] Add generated-HTML validation.
-- [ ] Add automated image optimization.
-- [ ] Evaluate Dependabot or Renovate.
-- [ ] Add secret/sensitive-value scanning suitable for a public repository.
-
-## 8. Feature maintenance status
-
-### Complete or available
-
-- About, Projects, and Posts pages plus core navigation.
-
-### Outstanding or deferred
-
-- [ ] Resume/CV page or downloadable PDF.
-- [ ] Real project case studies with architecture diagrams, role descriptions, outcomes, and repository/demo links.
-- [ ] Real profile/contact links.
-- [ ] Comment system with moderation and privacy rules.
-- [ ] Newsletter provider, consent, unsubscribe, and data retention policies.
-- [ ] Analytics, which requires a privacy policy and an accountable owner first.
-
-## 9. Future feature planning
-
-Prioritized by low risk and low maintenance:
-
-1. Publish real technical articles and project case studies with public repository links.
-2. Add a Resume/CV page once content is ready.
-3. Complete mobile, Lighthouse, HTML, and accessibility audits.
-4. Choose spell, dependency, external-link, and image automation based on maintenance value.
-5. Evaluate build-time GitHub project data to avoid client-side live API dependencies.
-6. Evaluate AI-assisted drafts, citation checks, architecture-diagram generation, and publish summaries only when a real need exists; keep human review, citation validation, and secret filtering.
-7. Evaluate Analytics, comments, Newsletter, or social media publishing only when clearly needed.
-8. Custom domains, Cloudflare DNS, caching, and security services are not part of the current default URL plan; if hosting strategy changes, open a separate change and re-verify HTTPS, canonical URLs, and DNS.
-
-## 10. Change acceptance criteria
+## 8. Change acceptance criteria
 
 Every important change should at least:
 
@@ -210,18 +132,3 @@ Every important change should at least:
 - [ ] Keep source, artifacts, logs, and generated pages free of credentials, private keys, or sensitive infrastructure information.
 - [ ] Document theme upgrades, article publishing, rollback, and local development flows.
 - [ ] Stay low-cost and low-maintenance without unnecessary backend infrastructure.
-
-## 11. Summary of outstanding work
-
-Do not mark the following as complete until the conditions are met:
-
-- Recorded GitHub repository branch protection and required-checks settings.
-- Maintained records of Actions deployment history and `github-pages` Environment protection rules.
-- Real avatar, social links, profile/contact links, and public resume information.
-- Resume/CV page or PDF.
-- Real project case studies, architecture diagrams, metrics, and repository links.
-- Dated technical articles, especially representative articles ready for public release.
-- Mobile real-device, Lighthouse, HTML, and accessibility verification.
-- Spell checking, secret scanning, pre-commit, scheduled dependency/external-link checks, and image optimization.
-- Privacy and operations plans for comments, Newsletter, Analytics, and AI-assisted publishing.
-- Custom domains, DNS, and CNAME, which the current default user site does not require.

@@ -1,0 +1,12 @@
+/* Homepage profile hero: reserve the first viewport and keep the author
+   image centered in the browser viewport (50svh), while preserving the
+   relative layout of the hero components below it. */
+.homepage-hero {
+  min-height: calc(100svh - 2 * var(--header-height, 4rem));
+}
+
+.homepage-hero > header {
+  margin-top: calc(
+    50svh - var(--header-height, 4rem) - var(--hero-img-offset, 4.5rem)
+  );
+}
