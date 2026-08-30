@@ -1,0 +1,20 @@
+label: "简体中文"
+locale: "zh-CN"
+weight: 2
+contentDir: "content/zh-cn"
+title: "Camille He | 云工程作品集"
+params:
+  displayName: "中文"
+  isoCode: "zh-cn"
+  rtl: false
+  dateFormat: "2006年1月2日"
+  description: "覆盖 AWS、Terraform、DevOps、安全与 AI 工程的云工程笔记与作品集。"
+  author:
+    name: Camille He
+    headline: "云 / DevOps 工程师"
+    image: img/author.png
+    bio: "我设计可靠的云基础设施，并探索实用的自动化与 AI 工程实践。"
+    links:
+      - github: "https://github.com/camillehe1992"
+      - linkedin: "https://www.linkedin.com/in/camillehe/"
+      - email: "mailto:camille.he@outlook.com"

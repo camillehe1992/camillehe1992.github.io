@@ -1,6 +1,8 @@
 baseURL: "https://camillehe1992.github.io/"
 locale: "en-US"
 defaultContentLanguage: "en"
+defaultContentLanguageInSubdir: true
+hasCJKLanguage: true
 timezone: "Asia/Shanghai"
 title: "Camille He | Cloud Engineering Portfolio"
 description: "Cloud engineering notes and portfolio work covering AWS, Terraform, DevOps, security, and AI engineering."
