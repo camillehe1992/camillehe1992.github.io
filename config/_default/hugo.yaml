@@ -4,7 +4,7 @@ defaultContentLanguage: "en"
 defaultContentLanguageInSubdir: true
 hasCJKLanguage: true
 timezone: "Asia/Shanghai"
-title: "Camille He | Cloud Engineering Portfolio"
+title: "Camille He"
 description: "Cloud engineering notes and portfolio work covering AWS, Terraform, DevOps, security, and AI engineering."
 enableRobotsTXT: true
 enableGitInfo: false

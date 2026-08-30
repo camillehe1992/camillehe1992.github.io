@@ -2,7 +2,7 @@ label: English
 locale: "en-US"
 weight: 1
 contentDir: "content/en"
-title: "Camille He | Cloud Engineering Portfolio"
+title: "Camille He"
 params:
   displayName: EN
   isoCode: en

@@ -36,9 +36,9 @@ front matter、图片、技术格式、编辑审阅和发布约定。
 
 ## 配置说明
 
-- `config/_default/hugo.yaml`、`params.yaml`、`languages.en.yaml` 和 `menus.en.yaml` 保存站点和 Blowfish 配置。
+- `config/_default/hugo.yaml`、`params.yaml`、`languages.en.yaml`、`menus.en.yaml` 和 `menus.zh-cn.yaml` 保存站点和 Blowfish 配置。
 - `baseURL` 配置为 GitHub Pages 用户站点地址 `https://camillehe1992.github.io/`。
-- 技术文章位于 `content/posts/{aws,terraform,cloudformation,devops,security,ai}/`；front matter、图片、格式和编辑审阅约定见 [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md)。
+- 英文文章位于 `content/en/posts/{aws,terraform,cloudformation,devops,security,ai}/`，中文对应内容位于 `content/zh-cn/posts/`；front matter、图片、格式和编辑审阅约定见 [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md)。
 - Blowfish `v3.4.0` 通过 `config/_default/module.toml` 引入，并在 `go.mod`/`go.sum` 中固定。
 - GitHub、LinkedIn 和 email profile 链接已配置在
   `config/_default/languages.en.yaml`。
