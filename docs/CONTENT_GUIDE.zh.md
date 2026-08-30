@@ -2,9 +2,10 @@
 
 [中文](CONTENT_GUIDE.zh.md) ｜ [English](CONTENT_GUIDE.md)
 
-本指南定义当前技术文章和作品集内容的创作、审核与发布流程。内容位于
-`content/`，以 Markdown 形式审阅；生成的 `public/` 输出不提交。站点级部署
-与维护规则见 [网站维护规范](WEBSITE_MAINTENANCE_GUIDE.md) ｜
+本指南定义当前技术文章和作品集内容的创作、审核与发布流程。内容按语言组织：
+英文位于 `content/en/`，简体中文位于 `content/zh-cn/`，两者相对路径一致，
+Hugo 会自动配对翻译。内容以 Markdown 形式审阅；生成的 `public/` 输出不提交。
+站点级部署与维护规则见 [网站维护规范](WEBSITE_MAINTENANCE_GUIDE.md) ｜
 [中文](WEBSITE_MAINTENANCE_GUIDE.zh.md)。
 
 ## 内容结构
@@ -12,7 +13,7 @@
 文章按主题分组：
 
 ```text
-content/posts/
+content/en/posts/          （英文源内容；中文镜像位于 content/zh-cn/posts/）
 ├── aws/
 ├── terraform/
 ├── cloudformation/
@@ -63,7 +64,7 @@ References。删除对文章无用的章节。页面使用主题提供的 H1，�
 文章专属图片优先使用 page bundle：
 
 ```text
-content/posts/aws/example/
+content/en/posts/aws/example/
 ├── index.md
 └── architecture.svg
 ```

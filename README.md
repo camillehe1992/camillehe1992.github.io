@@ -39,10 +39,10 @@ write generated output to `public/`, which remains untracked.
 
 ## Configuration notes
 
-- `config/_default/hugo.yaml`, `params.yaml`, `languages.en.yaml`, and `menus.en.yaml` contain site and Blowfish configuration.
+- `config/_default/hugo.yaml`, `params.yaml`, `languages.en.yaml`, `menus.en.yaml`, and `menus.zh-cn.yaml` contain site and Blowfish configuration.
 - `baseURL` is configured for the GitHub Pages user site at
   `https://camillehe1992.github.io/`.
-- Technical posts are organized under `content/posts/{aws,terraform,cloudformation,devops,security,ai}/`; see [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md) for front matter, visuals, formatting, and editorial review conventions.
+- English posts are organized under `content/en/posts/{aws,terraform,cloudformation,devops,security,ai}/` and Chinese equivalents under `content/zh-cn/posts/`; see [docs/CONTENT_GUIDE.md](docs/CONTENT_GUIDE.md) for front matter, visuals, formatting, and editorial review conventions.
 - Blowfish v3.4.0 is imported through `config/_default/module.toml` and pinned in `go.mod`/`go.sum`.
 - GitHub, LinkedIn, and email profile links are configured in
   `config/_default/languages.en.yaml`.

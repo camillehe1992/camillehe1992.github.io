@@ -3,9 +3,12 @@
 [中文](CONTENT_GUIDE.zh.md) ｜ [English](CONTENT_GUIDE.md)
 
 This guide defines the current workflow for technical articles and portfolio
-content. Content lives in `content/` and is reviewed as Markdown; generated
-`public/` output is not committed. Site-wide deployment and maintenance rules
-are documented in the [Website Maintenance Guide](WEBSITE_MAINTENANCE_GUIDE.md)
+content. Content is organized per language: English under `content/en/` and
+Simplified Chinese under `content/zh-cn/`, with identical relative paths so
+Hugo pairs translations automatically. Content is reviewed as Markdown;
+generated `public/` output is not committed. Site-wide deployment and
+maintenance rules are documented in the
+[Website Maintenance Guide](WEBSITE_MAINTENANCE_GUIDE.md)
 ｜ [中文](WEBSITE_MAINTENANCE_GUIDE.zh.md).
 
 ## Content structure
@@ -13,7 +16,7 @@ are documented in the [Website Maintenance Guide](WEBSITE_MAINTENANCE_GUIDE.md)
 Posts are grouped by primary subject:
 
 ```text
-content/posts/
+content/en/posts/          (English source; Chinese mirrors under content/zh-cn/posts/)
 ├── aws/
 ├── terraform/
 ├── cloudformation/
@@ -68,7 +71,7 @@ Use the theme-provided H1 for the page and start the body with H2 headings.
 Use page bundles for article-specific images:
 
 ```text
-content/posts/aws/example/
+content/en/posts/aws/example/
 ├── index.md
 └── architecture.svg
 ```

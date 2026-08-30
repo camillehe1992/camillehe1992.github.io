@@ -1,0 +1,13 @@
+main:
+  - name: 首页
+    pageRef: /
+    weight: 1
+  - name: 文章
+    pageRef: posts
+    weight: 10
+  - name: 项目
+    pageRef: projects
+    weight: 20
+  - name: 关于
+    pageRef: about
+    weight: 30
