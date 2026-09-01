@@ -15,23 +15,6 @@ slug: git-sync-infrastructure-workflow
 
 ## Overview
 
-## 目录
-
-- [Overview](#overview)
-- [Background](#background)
-- [Architecture / Design](#architecture--design)
-  - [这次实践当前管理什么](#这次实践当前管理什么)
-  - [为什么先从这两个 Stack 开始](#为什么先从这两个-stack-开始)
-- [Implementation](#implementation)
-  - [仓库结构](#仓库结构)
-  - [Template 与 Deployment 的拆分](#template-与-deployment-的拆分)
-  - [Git Sync 工作流如何运作](#git-sync-工作流如何运作)
-  - [Git Sync 的创建与绑定](#git-sync-的创建与绑定)
-- [Configuration Examples](#configuration-examples)
-- [Validation](#validation)
-- [Lessons Learned](#lessons-learned)
-- [References](#references)
-
 这篇文章记录的是一次很小但很实际的 GitOps 过渡。我没有从零重建一套新的 AWS 基础设施，而是把原本在 AWS portal 中手动创建和维护的基础资源，逐步迁回到 Git 驱动的 CloudFormation 工作流里。
 
 因为相关仓库目前仍然是 private，正文会直接保留理解这次实践所必需的内容，包括设计动机、资源范围、目录结构、template 与 deployment 的拆分方式，以及 Git Sync 的工作流边界。重点不是展开完整源码，而是说明这次迁移为什么值得做、是如何组织起来的，以及它最终带来了什么变化。

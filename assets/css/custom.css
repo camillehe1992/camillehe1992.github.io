@@ -10,3 +10,44 @@
     50svh - var(--header-height, 4rem) - var(--hero-img-offset, 4.5rem)
   );
 }
+
+/* Refine the theme's generated TOC so long articles keep a readable,
+   sticky navigation rail on desktop while mobile keeps the built-in
+   collapsible variant. */
+.toc {
+  --toc-offset-top: 6.5rem;
+}
+
+.toc .toc-right {
+  max-height: calc(100svh - var(--toc-offset-top) - 1.5rem);
+  scrollbar-gutter: stable;
+}
+
+.toc #TableOfContents a,
+.toc #TableOfContentsMobile a {
+  display: inline-block;
+  text-decoration: none;
+  transition:
+    color 150ms ease,
+    transform 150ms ease;
+}
+
+.toc #TableOfContents a:hover,
+.toc #TableOfContents a:focus-visible,
+.toc #TableOfContentsMobile a:hover,
+.toc #TableOfContentsMobile a:focus-visible {
+  color: var(--color-primary-600);
+  transform: translateX(2px);
+}
+
+.toc #TableOfContents a.active,
+.toc #TableOfContentsMobile a.active {
+  color: var(--color-primary-600);
+  font-weight: 600;
+}
+
+.toc #TableOfContents ul,
+.toc #TableOfContentsMobile ul {
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
+}
