@@ -65,6 +65,9 @@ Use the archetype headings as a flexible starting point: Overview, Background,
 Architecture / Design, Implementation, Configuration Examples, Validation,
 Lessons Learned, and References. Remove sections that do not serve the article.
 Use the theme-provided H1 for the page and start the body with H2 headings.
+Do not write `## Contents` manually in the body; the site generates a
+navigation TOC from H2-H4 headings in the desktop sidebar and the mobile
+collapsible section.
 
 ## Visuals
 

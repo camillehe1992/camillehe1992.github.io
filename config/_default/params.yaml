@@ -6,6 +6,7 @@ enableSearch: true
 enableCodeCopy: true
 enableStructuredBreadcrumbs: true
 replyByEmail: false
+smartTOC: true
 
 seo:
   metaDescriptionOrder:
@@ -35,6 +36,7 @@ article:
   showAuthor: true
   showReadingTime: true
   showHeadingAnchors: true
+  showTableOfContents: true
   showPagination: true
   showTaxonomies: true
   showCategories: true
@@ -42,6 +44,7 @@ article:
 
 list:
   showSummary: true
+  showTableOfContents: true
   showCards: true
   groupByYear: true
 

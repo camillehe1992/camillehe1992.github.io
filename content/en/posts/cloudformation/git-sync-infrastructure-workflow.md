@@ -15,23 +15,6 @@ slug: git-sync-infrastructure-workflow
 
 ## Overview
 
-## Contents
-
-- [Overview](#overview)
-- [Background](#background)
-- [Architecture / Design](#architecture--design)
-  - [What this repository manages](#what-this-repository-manages)
-  - [Why these two stacks came first](#why-these-two-stacks-came-first)
-- [Implementation](#implementation)
-  - [Repository structure](#repository-structure)
-  - [Template and deployment split](#template-and-deployment-split)
-  - [How the Git sync workflow works](#how-the-git-sync-workflow-works)
-  - [Creating and binding Git sync](#creating-and-binding-git-sync)
-- [Configuration Examples](#configuration-examples)
-- [Validation](#validation)
-- [Lessons Learned](#lessons-learned)
-- [References](#references)
-
 This article describes a small but practical GitOps transition. I did not rebuild a new AWS foundation from scratch. Instead, I moved foundational resources that had originally been created and maintained manually in the AWS portal into a Git-driven CloudFormation workflow.
 
 Because the underlying repository is still private, this article includes the pieces needed to understand the design directly: the motivation, the scoped set of resources, the repository structure, the split between templates and deployment files, and the workflow boundaries around Git sync. The goal is not to expose the full source repository, but to explain why this migration was worth doing, how it was organized, and what changed as a result.

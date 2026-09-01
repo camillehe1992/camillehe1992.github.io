@@ -58,6 +58,8 @@ CI/CD、LLM、Vector Database 等具体技术。Hugo 标准 taxonomy 在
 以 archetype 标题为灵活起点：Overview、Background、Architecture / Design、
 Implementation、Configuration Examples、Validation、Lessons Learned 和
 References。删除对文章无用的章节。页面使用主题提供的 H1，正文从 H2 开始。
+不要在正文手写 `## Contents` / `## 目录`；站点会根据 H2-H4 自动在桌面端右侧、
+移动端折叠区域生成目录导航。
 
 ## 图片与可视化
 
