@@ -13,19 +13,19 @@ series: []
 slug: git-sync-infrastructure-workflow
 ---
 
-## Overview
+## 概述
 
 这篇文章记录的是一次很小但很实际的 GitOps 过渡。我没有从零重建一套新的 AWS 基础设施，而是把原本在 AWS portal 中手动创建和维护的基础资源，逐步迁回到 Git 驱动的 CloudFormation 工作流里。
 
 因为相关仓库目前仍然是 private，正文会直接保留理解这次实践所必需的内容，包括设计动机、资源范围、目录结构、template 与 deployment 的拆分方式，以及 Git Sync 的工作流边界。重点不是展开完整源码，而是说明这次迁移为什么值得做、是如何组织起来的，以及它最终带来了什么变化。
 
-## Background
+## 背景
 
 手动在控制台里创建资源很快，但后续维护并不轻松。配置分散在 portal 页面中，变更往往依赖记忆、截图或者临时记录。对于会长期使用、并且会被后续自动化依赖的基础资源来说，这种方式既不利于审查，也不容易复现。
 
 我想做的并不是一次性把整个 AWS 环境重建成一套完整的 GitOps 平台，而是先从范围最小、价值最明确的部分开始：把少量关键基础资源写成 CloudFormation 模板，配上 deployment file，再通过 CloudFormation Git Sync 让 Git 成为后续变更的入口。在这里，Git 不只是配置备份，而是逐渐成为基础设施变更的边界。
 
-## Architecture / Design
+## 架构 / 设计
 
 ### 这次实践当前管理什么
 
@@ -42,7 +42,7 @@ slug: git-sync-infrastructure-workflow
 
 GitHub Actions 如果要安全地访问 AWS，就需要一个基于 OIDC 的 IAM role。只要后续继续使用 Terraform，remote state backend 就会是一个绕不过去的基础依赖。先把这两部分纳入 Git 驱动的管理方式，可以先稳定自动化的入口和状态基础，再考虑后续更大的扩展。
 
-## Implementation
+## 实现
 
 ### 仓库结构
 
@@ -68,7 +68,7 @@ aws-cfn-stacks/
 
 这种结构的好处是职责比较清楚：模板负责描述资源，deployment file 负责描述如何把这份定义接到 Git Sync 上，文档则负责解释整个工作流的边界和操作方式。
 
-### Template 与 Deployment 的拆分
+### Template 与 Deployment 的分离
 
 这次实践里，一个关键设计是把资源定义和部署绑定信息拆开。template 专注资源定义，deployment file 则成为 Git Sync 绑定的入口。
 
@@ -115,7 +115,7 @@ Git Sync 的初始创建仍然需要在 AWS 中先完成一次绑定，高层步
 
 这篇文章不展开逐屏操作，因为那会让正文更像产品手册。更完整的步骤我已经单独整理进仓库文档里，这里只保留工作流视角。
 
-## Configuration Examples
+## 配置示例
 
 下面是一个简化后的 deployment file 示例：
 
@@ -138,7 +138,7 @@ Resources:
 
 这两个片段的作用不是展示完整模板语法，而是说明这次实践如何把“资源定义”和“部署绑定”分成两个层次，以便更清楚地接到 Git Sync 上。
 
-## Validation
+## 验证
 
 这次实践的价值，不在于一下子把多少 AWS 资源都纳入统一管理，而在于我开始把后续变更从 portal 页面迁回到 Git 中。
 
@@ -146,14 +146,14 @@ Resources:
 
 对个人 AWS 环境来说，这种小步推进比一开始就规划一个很大的 GitOps 平台更现实。它保留了原生 CloudFormation 的控制面，也让 Git 真正开始承担基础设施变更入口的角色。
 
-## Lessons Learned
+## 经验总结
 
 - 这并不是从零构建全部基础设施，而是把已经存在的手工资源逐步纳管进 Git。
 - 当前范围仍然很小，只覆盖了两个 foundational stack，但已经足以验证这条工作流。
 - Git Sync 自身的初始绑定过程依然需要在 AWS 控制台中完成，所以它不是一种“完全没有手工步骤”的理想化 GitOps。
 - 对个人 AWS 环境来说，把关键资源先迁回 Git，比一开始就设计一个很大的平台化方案更现实。
 
-## References
+## 参考资料
 
 - [How Git sync works with CloudFormation](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/git-sync-concepts-terms.html)
 - [Syncing stacks with source code stored in a Git repository with Git sync](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/git-sync.html)
